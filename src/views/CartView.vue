@@ -11,16 +11,16 @@
     >
       <v-card class="item-details">
         <img :src="item.thumbnail" alt="">
-        <span>Brand: {{ item.brand }}</span>
-        <span>Category: {{ item.category }}</span>
-        <span>Price: {{ item.price }}€</span>
+        <span data-cy="brand">Brand: {{ item.brand }}</span>
+        <span data-cy="category">Category: {{ item.category }}</span>
+        <span data-cy="price">Price: {{ item.price }}€</span>
         <v-btn @click="removeFromCart(item)">Remove</v-btn>
       </v-card>
     </div>
   </div>
-  <p v-if="total < 1000 && store.cart.length">Total: {{ total }}€</p>
+  <p data-cy="total-price" v-if="total < 1000 && store.cart.length">Total: {{ total }}€</p>
   <div v-if="total > 1000">
-    <p>Discounted total: {{ formattedTotal }}€</p>
+    <p data-cy="total-price">Discounted total: {{ formattedTotal }}€</p>
   </div>
 </template>
 
