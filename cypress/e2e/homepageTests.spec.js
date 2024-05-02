@@ -1,4 +1,3 @@
-/// <reference types="cypress"/>
 
 describe ('HomepageTests', () => {
 
@@ -33,9 +32,11 @@ describe ('HomepageTests', () => {
     cy.get('@productCard')
       .eq(0)
       .find('img').should('have.attr','alt')
-      .next('h2').should('include.text', 'Brand:')
-      .next('p').should('include.text','Description:')
-      .next('p').should('include.text', 'Price:')
+    cy.get('@productCard')
+      .eq(0)
+      .contains('h2','Brand:')
+      .next('p').contains('Description:')
+      .next('p').contains('Price:')
 
     cy.get('@productCard')
       .eq(3).click()
@@ -44,9 +45,11 @@ describe ('HomepageTests', () => {
     cy.get('@productCard')
       .eq(3)
       .find('img').should('have.attr','alt')
-      .next('h2').should('include.text', 'Brand:')
-      .next('p').should('include.text','Description:')
-      .next('p').should('include.text', 'Price:')
+    cy.get('@productCard')
+      .eq(3)
+      .contains('h2','Brand:')
+      .next('p').contains('Description:')
+      .next('p').contains('Price:')
 
     cy.get('@productCard')
       .eq(8).click()
@@ -55,9 +58,11 @@ describe ('HomepageTests', () => {
     cy.get('@productCard')
       .eq(8)
       .find('img').should('have.attr','alt')
-      .next('h2').should('include.text', 'Brand:')
-      .next('p').should('include.text','Description:')
-      .next('p').should('include.text', 'Price:')
+    cy.get('@productCard')
+      .eq(8)
+      .contains('h2','Brand:')
+      .next('p').contains('Description:')
+      .next('p').contains('Price:')
 
 
   })

@@ -63,14 +63,23 @@ function checkTotalPrice() {
   })
 }
 function removeFromCart(itemIndex) {
+
+  let initialItemCount
   cy.get('main.bg-secondary')
     .get('div.cart-items')
-    .get('div.cart-item').eq(itemIndex).as('cart-item')
-
-  // eslint-disable-next-line cypress/unsafe-to-chain-command
-  cy.get('@cart-item')
-    .find('button').click()
-    .should('not.exist')
+    .find('div.cart-item')
+    .its('length')
+    .then((count) => {
+      initialItemCount = count;
+      cy.get('main.bg-secondary')
+        .get('div.cart-items')
+        .get('div.cart-item').eq(itemIndex)
+        .find('button').click();
+      cy.get('main.bg-secondary')
+        .get('div.cart-items')
+        .find('div.cart-item')
+        .should('have.length', initialItemCount - 1);
+    })
 }
 
 describe ('HomepageTests', () => {
