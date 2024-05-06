@@ -84,7 +84,7 @@ function removeFromCart(itemIndex) {
 
 describe ('HomepageTests', () => {
 
-  it('homepage elements', () => {
+  it('check product card', () => {
     let currentTotal = 0
 
     cy.visit('/')
